@@ -43,6 +43,11 @@ func (p *Plugin) Uninstall(ctx context.Context, retainBusinessData bool) error {
 		return err
 	}
 	if retainBusinessData {
+		// 未配置清理回调时，保留业务数据卸载仅移除插件菜单，标签数据完整保留，
+		// 不应调用空回调而引发运行时崩溃。
+		if p.retainedDataCleanup == nil {
+			return nil
+		}
 		return p.retainedDataCleanup(ctx)
 	}
 	return p.tags.DeleteAllTags(ctx)
