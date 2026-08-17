@@ -43,6 +43,9 @@ func (p *Plugin) Uninstall(ctx context.Context, retainBusinessData bool) error {
 		return err
 	}
 	if retainBusinessData {
+		if p.retainedDataCleanup == nil {
+			return nil
+		}
 		return p.retainedDataCleanup(ctx)
 	}
 	return p.tags.DeleteAllTags(ctx)
