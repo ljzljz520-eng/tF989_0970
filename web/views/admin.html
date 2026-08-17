@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>客户回访标签 · 管理</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/admin/tags">客户回访标签</a>
+    <nav aria-label="主导航">
+      <a class="active" href="/admin/tags">后台维护</a>
+      <a href="/tags">标签说明页</a>
+    </nav>
+  </header>
+
+  <main class="workspace">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">标签配置</p>
+        <h1>回访标签管理</h1>
+        <p class="subheading">统一维护回访人员可用的标签、颜色、适用场景和展示顺序。</p>
+      </div>
+      <button class="primary" id="add-tag" type="button">＋ 新增标签</button>
+    </section>
+
+    <section class="status-strip" aria-label="插件状态">
+      <span class="status-dot" aria-hidden="true"></span>
+      <strong id="menu-status">正在读取菜单状态</strong>
+      <span id="tag-count"></span>
+    </section>
+
+    <section class="table-section" aria-labelledby="table-title">
+      <div class="section-title">
+        <h2 id="table-title">标签列表</h2>
+        <span id="load-state" role="status" aria-live="polite"></span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">排序</th>
+              <th scope="col">标签</th>
+              <th scope="col">颜色</th>
+              <th scope="col">适用场景</th>
+              <th scope="col"><span class="visually-hidden">操作</span></th>
+            </tr>
+          </thead>
+          <tbody id="tag-rows"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="empty-state" hidden>当前没有可用标签</div>
+    </section>
+  </main>
+
+  <dialog id="tag-dialog">
+    <form id="tag-form">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">标签配置</p>
+          <h2 id="dialog-title">新增标签</h2>
+        </div>
+        <button class="icon-button" id="close-dialog" type="button" aria-label="关闭" title="关闭">×</button>
+      </div>
+      <input id="tag-id" type="hidden">
+      <label>
+        标签名称
+        <input id="tag-name" name="name" maxlength="40" required autocomplete="off">
+      </label>
+      <div class="form-grid">
+        <label>
+          标签颜色
+          <input id="tag-color" name="color" type="color" value="#16855b" required>
+        </label>
+        <label>
+          展示排序
+          <input id="tag-sort" name="sortOrder" type="number" min="0" max="9999" value="10" required>
+        </label>
+      </div>
+      <label>
+        适用场景
+        <input id="tag-scenes" name="scenes" required autocomplete="off" placeholder="例如：售后回访，续约提醒">
+      </label>
+      <p class="form-error" id="form-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button class="secondary" id="cancel-dialog" type="button">取消</button>
+        <button class="primary" type="submit">保存标签</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/assets/admin.js" defer></script>
+</body>
+</html>

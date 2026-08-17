@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>客户回访标签 · 标签说明</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/tags">客户回访标签</a>
+    <nav aria-label="主导航">
+      <a href="/admin/tags">后台维护</a>
+      <a class="active" href="/tags">标签说明页</a>
+    </nav>
+  </header>
+
+  <main class="workspace readonly-workspace">
+    <section class="page-heading readonly-heading">
+      <div>
+        <p class="eyebrow">回访工作台</p>
+        <h1>标签说明</h1>
+        <p class="subheading">按展示顺序查看当前标签及其适用场景。</p>
+      </div>
+      <span class="readonly-badge">只读</span>
+    </section>
+
+    <section class="legend" aria-label="标签颜色说明">
+      <strong>使用提示</strong>
+      <span>颜色用于快速识别，选择标签前请核对适用场景。</span>
+    </section>
+
+    <section class="tag-guide" id="tag-guide" aria-live="polite"></section>
+    <p class="empty-state" id="guide-state">正在读取标签</p>
+  </main>
+
+  <script src="/assets/labels.js" defer></script>
+</body>
+</html>
